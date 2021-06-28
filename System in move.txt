@@ -1,0 +1,530 @@
+from tkinter import*
+import tkinter as tk
+import time
+import random
+import datetime
+from tkinter import messagebox 
+
+#===================================page=====================================
+root = Tk()
+root.geometry("1200x630+0+0")
+root.state('zoomed')
+root.title("System In Move")
+root.configure(background='lightgrey')
+
+Tops = Frame(root, width=1350, height=750, bd=5, relief="raise")
+Tops.pack(side=TOP)
+
+f1 = Frame(root, width=900, height=600, bd=8, relief="raise")
+f1.pack(side=LEFT)
+
+f2 = Frame(root, width=440, height=600, bd=8, relief="raise")
+f2.pack(side=RIGHT)
+
+f1a = Frame(f1, width=900, height=600, bd=8, relief="raise")
+f1a.pack(side=TOP)
+
+f2a = Frame(f1, width=900, height=320, bd=6, relief="raise")
+f2a.pack(side=BOTTOM)
+
+ft2 = Frame(f2, width=440, height=450, bd=16, relief="raise")
+ft2.pack(side=TOP)
+fb2 = Frame(f2, width=440, height=250, bd=16, relief="raise")
+fb2.pack(side=BOTTOM)
+
+f1aa = Frame(f1a, width=400, height=320, bd=12, relief="raise")
+f1aa.pack(side=LEFT)
+f1ab = Frame(f1a, width=400, height=330, bd=12, relief="raise")
+f1ab.pack(side=RIGHT)
+
+f2aa = Frame(f2a, width=450, height=330, bd=16, relief="raise")
+f2aa.pack(side=LEFT)
+
+f2ab = Frame(f2a, width=450, height=330, bd=14, relief="raise")
+f2ab.pack(side=RIGHT)
+
+Tops.configure(background='black')
+f1.configure(background='black')
+f2.configure(background='black')
+
+lblInfo = Label(Tops, font=('C39HrP24DhTt', 75, 'bold'), text="               System In Move              ", bd=10)
+lblInfo.grid(row=0, column=0)
+lblInfo.configure(background='lightblue')
+
+#=====================================variavel=========================================
+var1 = IntVar()
+var2 = IntVar()
+var3 = IntVar()
+var4 = IntVar()
+var5 = IntVar()
+var6 = IntVar()
+var7 = IntVar()
+var8 = IntVar()
+var9 = IntVar()
+var10 = IntVar()
+var11 = IntVar()
+var12 = IntVar()
+var13 = IntVar()
+var14 = IntVar()
+var15 = IntVar()
+var16 = IntVar()
+
+
+DateofOrder=StringVar()
+Receipt_Ref=StringVar()
+Taxas=StringVar()
+Subtotal=StringVar()
+Valor_Total=StringVar()
+CostofTotallanches=StringVar()
+CostofDemaisItens=StringVar()
+ServicoCharge=StringVar()
+
+E_Xbacon=StringVar()
+E_Xsalada=StringVar()
+E_Xpresunto=StringVar()
+E_Xtudo=StringVar()
+E_Xmonster=StringVar()
+E_Xfrango=StringVar()
+E_Baguncinha=StringVar()
+E_Pao_na_chapa=StringVar()
+
+E_Refrigerante=StringVar()
+E_Cerveja=StringVar()
+E_Suco=StringVar()
+E_Batata=StringVar()
+E_Molho_extra=StringVar()
+E_Calabresa=StringVar()
+E_Frango=StringVar()
+E_Promocional=StringVar()
+  
+E_Xbacon.set("0")
+E_Xsalada.set("0")
+E_Xpresunto.set("0")
+E_Xtudo.set("0")
+E_Xmonster.set("0")
+E_Xfrango.set("0")
+E_Baguncinha.set("0")
+E_Pao_na_chapa.set("0")
+
+E_Refrigerante.set("0")
+E_Cerveja.set("0")
+E_Suco.set("0")
+E_Batata.set("0")
+E_Molho_extra.set("0")
+E_Calabresa.set("0")
+E_Frango.set("0")
+E_Promocional.set("0")
+
+
+DateofOrder.set(time.strftime("%d/%m/%Y"))
+#=============================def=================================================
+def qExit():
+    qExit= messagebox.askyesno("Sair do sistema","Deseja sair?")
+    if qExit > 0:
+        root.destroy()
+        return
+
+def Reset():
+  Taxas.set("")
+  Subtotal.set("")
+  CostofTotallanches.set("")
+  CostofDemaisItens.set("")
+  Valor_Total.set("")
+  ServicoCharge.set("")
+  txtReceipt.delete("1.0", END)
+  
+  E_Xbacon.set("0")
+  E_Xsalada.set("0")
+  E_Xpresunto.set("0")
+  E_Xtudo.set("0")
+  E_Xmonster.set("0")
+  E_Xfrango.set("0")
+  E_Baguncinha.set("0")
+  E_Pao_na_chapa.set("0")
+
+  E_Refrigerante.set("0")
+  E_Cerveja.set("0")
+  E_Suco.set("0")
+  E_Batata.set("0")
+  E_Molho_extra.set("0")
+  E_Calabresa.set("0")
+  E_Frango.set("0")
+  E_Promocional.set("0")
+
+  var1.set(0)
+  var2.set(0)
+  var3.set(0)
+  var4.set(0)
+  var5.set(0)
+  var6.set(0)
+  var7.set(0)
+  var8.set(0)
+  var9.set(0)
+  var10.set(0)
+  var11.set(0)
+  var12.set(0)
+  var13.set(0)
+  var14.set(0)
+  var15.set(0)
+  var16.set(0)
+
+#txt.Xbacon.configure(state=DISABLED)
+#txt.Xsalada.configure(state=DISABLED)
+#txt.Xpresunto.configure(state=DISABLED)
+#txt.Xtudo.configure(state=DISABLED)
+#txt.Xmonster.configure(state=DISABLED)
+#txt.Xfrango.configure(state=DISABLED)
+#txt.Baguncinha.configure(state=DISABLED)
+#txt.Pao_na_chapa.configure(state=DISABLED)
+#txt.Refrigerante.configure(state=DISABLED)
+#txt.Cerveja.configure(state=DISABLED)
+#txt.Suco.configure(state=DISABLED)
+#txt.Batata.configure(state=DISABLED)
+#txt.Molho_Extra.configure(state=DISABLED)
+#txt.Calabresa.configure(state=DISABLED)
+#txt.Frango.configure(state=DISABLED)
+#txt.Promocional.configure(state=DISABLED)
+  
+#===========================================Calculos=========================
+def Receipt():
+    txtReceipt.delete("1.0",END)
+    x = random.randint(10908, 500876)
+    randomRef = str(x)
+    Receipt_Ref.set("pedido: "+ randomRef)
+
+    txtReceipt.insert (END, 'Recibo referente ao\t'+ Receipt_Ref.get() +'\t\t\t\t\t'+ DateofOrder.get()+"\n")
+    txtReceipt.insert (END, 'Itens\t\t\t\t\t' + "QTD")
+    txtReceipt.insert (END, 'Xbacon: \t\t\t\t\t'+ E_Xbacon.get()+ "\n")
+    txtReceipt.insert (END, 'Xsalada: \t\t\t\t\t'+ E_Xsalada.get()+ "\n")
+    txtReceipt.insert (END, 'Xpresunto: \t\t\t\t\t'+ E_Xpresunto.get()+ "\n")
+    txtReceipt.insert (END, 'Xtudo: \t\t\t\t\t'+ E_Xtudo.get()+ "\n")
+    txtReceipt.insert (END, 'Xmonster: \t\t\t\t\t'+ E_Xmonster.get()+ "\n")
+    txtReceipt.insert (END, 'Xfrango: \t\t\t\t\t'+ E_Xfrango.get()+ "\n")
+    txtReceipt.insert (END, 'Baguncinha: \t\t\t\t\t'+ E_Baguncinha.get()+ "\n")
+    txtReceipt.insert (END, 'Pao na chapa: \t\t\t\t\t'+ E_Pao_na_chapa.get()+ "\n")
+    txtReceipt.insert (END, 'Refrigerante: \t\t\t\t\t'+ E_Refrigerante.get()+ "\n")
+    txtReceipt.insert (END, 'Cerveja: \t\t\t\t\t'+ E_Cerveja.get()+ "\n")
+    txtReceipt.insert (END, 'Suco: \t\t\t\t\t'+ E_Suco.get()+ "\n")
+    txtReceipt.insert (END, 'Batata: \t\t\t\t\t'+ E_Batata.get()+ "\n")
+    txtReceipt.insert (END, 'Molho extra: \t\t\t\t\t'+ E_Molho_extra.get()+ "\n")
+    txtReceipt.insert (END, 'Calabresa: \t\t\t\t\t'+ E_Calabresa.get()+ "\n")
+    txtReceipt.insert (END, 'Frango: \t\t\t\t\t'+ E_Frango.get()+ "\n")
+    txtReceipt.insert (END, 'Promocional: \t\t\t\t\t'+ E_Promocional.get()+ "\n")
+
+                       
+def CostofItem():
+    Item1=float(E_Xbacon.get())
+    Item2=float(E_Xsalada.get())
+    Item3=float(E_Xpresunto.get())
+    Item4=float(E_Xtudo.get())
+    Item5=float(E_Xmonster.get())
+    Item6=float(E_Xfrango.get())
+    Item7=float(E_Baguncinha.get())
+    Item8=float(E_Pao_na_chapa.get())
+    
+    Item9=float(E_Refrigerante.get())
+    Item10=float(E_Cerveja.get())
+    Item11=float(E_Suco.get())
+    Item12=float(E_Batata.get())
+    Item13=float(E_Molho_extra.get())
+    Item14=float(E_Calabresa.get())
+    Item15=float(E_Frango.get())
+    Item16=float(E_Promocional.get())
+    
+    PriceofLanches =(Item1 * 14.5) + (Item2 * 12.5) + (Item3 * 11.00) \
+                     + (Item4 * 16.5) + (Item5 * 18.9) + (Item6 * 14.0) + (Item7 * 15.0) + (Item8 * 2.5)
+
+    PriceofDemais_itens =(Item9 * 4.0) + (Item10 * 6.0) + (Item11 * 5.00) \
+                     + (Item12 * 8.0) + (Item13 * 1.9) + (Item14 * 8.0) + (Item15 * 10.0) + (Item16 * 10.0)
+
+    LanchesPrice ="$", str('%.2f'%(PriceofLanches))
+    Demais_itensPrice="$", str('%.2f'%(PriceofDemais_itens))
+    CostofTotallanches.set(PriceofLanches)
+    CostofDemaisItens.set(PriceofDemais_itens)
+    SC="$", str('%.2f'%(1.00))
+    ServicoCharge.set(SC)
+    
+    SubTotalofItens="$", str('%.2f'%(PriceofLanches + PriceofDemais_itens))
+    Subtotal.set(SubTotalofItens)
+
+    Tax="$", str('%.2f'%((PriceofLanches + PriceofDemais_itens + 1.00)*0.15))
+    Taxas.set(Tax)
+    TT = ((PriceofLanches + PriceofDemais_itens + 1.00)*0.15)
+    TC = "$", str('%.2f'%(PriceofLanches + PriceofDemais_itens + 1.00 + TT))
+    Valor_Total.set(TC)
+
+#==================================checkbox==============================================
+    
+def Check_Xbacon():
+    if   (var1.get() == 1):
+        txtXbacon.configure(state= NORMAL)
+        txtXbacon.delete(0, END)
+        txtXbacon.focus()
+    elif var1.get()== 0:
+        txtXbacon.configure(state= DISABLED)
+        E_Xbacon.set("0")
+def Check_Xsalada():
+    if (var2.get()== 1):
+        txtXsalada.configure(state= NORMAL)
+        txtXsalada.delete(0, END)
+        txtXsalada.focus()
+    elif var2.get()== 0:
+        txtXsalada.configure(state= DISABLED)
+        E_Xsalada.set("0")
+def Check_Xpresunto():
+    if (var3.get() == 1):
+        txtXpresunto.configure(state= NORMAL)
+        txtXpresunto.delete(0, END)
+        txtXpresunto.focus()
+    elif var3.get()== 0:
+        txtXpresunto.configure(state= DISABLED)
+        E_Xpresunto.set("0")
+def Check_Xtudo():
+    if (var4.get() == 1):
+        txtXtudo.configure(state= NORMAL)
+        txtXtudo.delete(0, END)
+        txtXtudo.focus()
+    elif var4.get()== 0:
+        txtXtudo.configure(state= DISABLED)
+        E_Xtudo.set("0")
+def Check_Xmonster():
+    if (var5.get() == 1):
+        txtXmonster.configure(state= NORMAL)
+        txtXmonster.delete(0, END)
+        txtXmonster.focus()
+    elif var5.get()== 0:
+        txtXmonster.configure(state= DISABLED)
+        E_Xmonster.set("0")
+def Check_Xfrango():
+    if (var6.get() == 1):
+        txtXfrango.configure(state= NORMAL)
+        txtXfrango.delete(0, END)
+        txtXfrango.focus()
+    elif var6.get()== 0:
+        txtXfrango.configure(state= DISABLED)
+        E_Xfrango.set("0")
+def Check_Baguncinha():
+    if (var7.get() == 1):
+        txtBaguncinha.configure(state= NORMAL)
+        txtBaguncinha.delete(0, END)
+        txtBaguncinha.focus()
+    elif var7.get()== 0:
+        txtBaguncinha.configure(state= DISABLED)
+        E_Baguncinha.set("0")
+def Check_Pao_na_chapa():
+    if  (var8.get() == 1):
+        txtPao_na_chapa.configure(state= NORMAL)
+        txtPao_na_chapa.delete(0, END)
+        txtPao_na_chapa.focus()
+    elif var8.get()== 0:
+        txtPao_na_chapa.configure(state= DISABLED)
+        E_Pao_na_chapa.set("0")
+def Check_Refrigerante():
+    if (var9.get() == 1):
+        txtRefrigerante.configure(state= NORMAL)
+        txtRefrigerante.delete(0, END)
+        txtRefrigerante.focus()
+    elif var9.get()== 0:
+        txtRefrigerante.configure(state= DISABLED)
+        E_Refrigerante.set("0")
+def Check_Cerveja():
+    if (var10.get() == 1):
+        txtCerveja.configure(state= NORMAL)
+        txtCerveja.delete(0, END)
+        txtCerveja.focus()
+    elif var10.get()== 0:
+        txtCerveja.configure(state= DISABLED)
+        E_Cerveja.set("0")
+def Check_Suco():
+    if (var11.get() == 1):
+        txtSuco.configure(state= NORMAL)
+        txtSuco.delete(0, END)
+        txtSuco.focus()
+    elif var11.get()== 0:
+        txtSuco.configure(state= DISABLED)
+        E_Suco.set("0")
+def Check_Batata():
+    if (var12.get() == 1):
+        txtBatata.configure(state= NORMAL)
+        txtBatata.delete(0, END)
+        txtBatata.focus()
+    elif var12.get()== 0:
+        txtBatata.configure(state= DISABLED)
+        E_Batata.set("0")
+def Check_Molho_extra():
+    if (var13.get() == 1):
+        txtMolho_extra.configure(state= NORMAL)
+        txtMolho_extra.delete(0, END)
+        txtMolho_extra.focus()
+    elif var13.get()== 0:
+        txtMolho_extra.configure(state= DISABLED)
+        E_Molho_extra.set("0")
+def Check_Calabresa():
+    if (var14.get() == 1):
+        txtCalabresa.configure(state= NORMAL)
+        txtCalabresa.delete(0, END)
+        txtCalabresa.focus()
+    elif var14.get()== 0:
+        txtCalabresa.configure(state= DISABLED)
+        E_Calabresa.set("0")
+def Check_Frango():
+    if (var15.get() == 1):
+        txtFrango.configure(state= NORMAL)
+        txtFrango.delete(0, END)
+        txtFrango.focus()
+    elif var15.get()== 0:
+        txtFrango.configure(state= DISABLED)
+        E_Frango.set("0")
+def Check_Promocional():
+    if (var16.get()== 1):
+        txtPromocional.configure(state=NORMAL)
+        txtPromocional.delete(0, END)
+        txtPromocional.focus()
+    elif var16.get()== 0:
+        txtPromocional.configure(state=DISABLED)
+        E_Promocional.set("0")
+
+
+  
+#==================================lanches=========================
+
+Xbacon = Checkbutton(f1aa, text="Xbacon \t\t\t", command= Check_Xbacon, variable=var1, onvalue=1, offvalue=0,
+                    font=('arial', 20, 'bold')).grid(row=0, column=0)
+
+Xsalada = Checkbutton(f1aa, text="Xsalada \t\t\t", command= Check_Xsalada, variable=var2, onvalue=1, offvalue=0,
+                    font=('arial', 20, 'bold')).grid(row=1, column=0)
+
+Xpresunto = Checkbutton(f1aa, text="Xpresunto \t\t", command= Check_Xpresunto, variable=var3, onvalue=1, offvalue=0,
+                    font=('arial', 20, 'bold')).grid(row=2, column=0)
+
+Xtudo = Checkbutton(f1aa, text="Xtudo \t\t\t", command= Check_Xtudo, variable=var4, onvalue=1, offvalue=0,
+                    font=('arial', 20, 'bold')).grid(row=3, column=0)
+
+Xmonster = Checkbutton(f1aa, text="Xmonster \t\t", command= Check_Xmonster, variable=var5, onvalue=1, offvalue=0,
+                    font=('arial', 20, 'bold')).grid(row=4, column=0)
+
+Xfrango = Checkbutton(f1aa, text="Xfrango \t\t\t", command= Check_Xfrango, variable=var6, onvalue=1, offvalue=0,
+                    font=('arial', 20, 'bold')).grid(row=5, column=0)
+
+Baguncinha = Checkbutton(f1aa, text="Baguncinha \t\t", command= Check_Baguncinha, variable=var7, onvalue=1, offvalue=0,
+                    font=('arial', 20, 'bold')).grid(row=6, column=0)
+
+Pao_na_chapa = Checkbutton(f1aa, text="Pao na chapa \t\t", command= Check_Pao_na_chapa, variable=var8, onvalue=1, offvalue=0,
+                    font=('arial', 20, 'bold')).grid(row=7, column=0)
+
+#===================================demais_itens=========================
+
+Refrigerante = Checkbutton(f1ab, text="Refrigerante \t", command= Check_Refrigerante, variable=var9, onvalue=1, offvalue=0,
+                    font=('arial', 20, 'bold')).grid(row=0, column=0)
+
+Cerveja = Checkbutton(f1ab, text="Cerveja \t\t", command= Check_Cerveja, variable=var10, onvalue=1, offvalue=0,
+                    font=('arial', 20, 'bold')).grid(row=1, column=0)
+
+Suco = Checkbutton(f1ab, text="Suco \t\t", command= Check_Suco, variable=var11, onvalue=1, offvalue=0,
+                    font=('arial', 20, 'bold')).grid(row=2, column=0)
+
+Batata = Checkbutton(f1ab, text="Batata \t\t", command= Check_Batata, variable=var12, onvalue=1, offvalue=0,
+                    font=('arial', 20, 'bold')).grid(row=3, column=0)
+
+Molho_extra = Checkbutton(f1ab, text="Molho \t\t", command= Check_Molho_extra, variable=var13, onvalue=1, offvalue=0,
+                    font=('arial', 20, 'bold')).grid(row=4, column=0)
+
+Calabresa = Checkbutton(f1ab, text="Calabresa \t", command= Check_Calabresa, variable=var14, onvalue=1, offvalue=0,
+                    font=('arial', 20, 'bold')).grid(row=5, column=0)
+
+Frango = Checkbutton(f1ab, text="Frango \t\t", command= Check_Frango, variable=var15, onvalue=1, offvalue=0,
+                    font=('arial', 20, 'bold')).grid(row=6, column=0)
+
+Promocional = Checkbutton(f1ab, text="Promocional \t", command= Check_Promocional, variable=var16, onvalue=1, offvalue=0,
+                    font=('arial', 20, 'bold')).grid(row=7, column=0)
+                
+#===========================Enter_lanches===========================
+
+txtXbacon = Entry(f1aa, font=('arial', 16, 'bold'), bd=8, width=6, justify='left', textvariable=E_Xbacon, state=DISABLED)
+txtXbacon.grid(row=0, column=1)
+txtXsalada = Entry(f1aa, font=('arial', 16, 'bold'), bd=8, width=6, justify='left', textvariable=E_Xsalada, state=DISABLED)
+txtXsalada.grid(row=1, column=1)
+txtXpresunto = Entry(f1aa, font=('arial', 16, 'bold'), bd=8, width=6, justify='left', textvariable=E_Xpresunto, state=DISABLED)
+txtXpresunto.grid(row=2, column=1)
+txtXtudo = Entry(f1aa, font=('arial', 16, 'bold'), bd=8, width=6, justify='left', textvariable=E_Xtudo, state=DISABLED)
+txtXtudo.grid(row=3, column=1)
+txtXmonster = Entry(f1aa, font=('arial', 16, 'bold'), bd=8, width=6, justify='left', textvariable=E_Xmonster, state=DISABLED)
+txtXmonster.grid(row=4, column=1)
+txtXfrango = Entry(f1aa, font=('arial', 16, 'bold'), bd=8, width=6, justify='left', textvariable=E_Xfrango, state=DISABLED)
+txtXfrango.grid(row=5, column=1)
+txtBaguncinha = Entry(f1aa, font=('arial', 16, 'bold'), bd=8, width=6, justify='left', textvariable=E_Baguncinha, state=DISABLED)
+txtBaguncinha.grid(row=6, column=1)
+txtPao_na_chapa = Entry(f1aa, font=('arial', 16, 'bold'), bd=8, width=6, justify='left', textvariable=E_Pao_na_chapa, state=DISABLED)
+txtPao_na_chapa.grid(row=7, column=1)
+
+#=============================Enter_demais_itens====================
+
+txtRefrigerante = Entry(f1ab, font=('arial', 16, 'bold'), bd=8, width=6, justify='left', textvariable=E_Refrigerante, state=DISABLED)
+txtRefrigerante.grid(row=0, column=1)
+txtCerveja = Entry(f1ab, font=('arial', 16, 'bold'), bd=8, width=6, justify='left', textvariable=E_Cerveja, state=DISABLED)
+txtCerveja.grid(row=1, column=1)
+txtSuco = Entry(f1ab, font=('arial', 16, 'bold'), bd=8, width=6, justify='left',textvariable=E_Suco, state=DISABLED)
+txtSuco.grid(row=2, column=1)
+txtBatata = Entry(f1ab, font=('arial', 16, 'bold'), bd=8, width=6, justify='left', textvariable=E_Batata, state=DISABLED)
+txtBatata.grid(row=3, column=1)
+txtMolho_extra = Entry(f1ab, font=('arial', 16, 'bold'), bd=8, width=6, justify='left', textvariable=E_Molho_extra, state=DISABLED)
+txtMolho_extra.grid(row=4, column=1)
+txtCalabresa = Entry(f1ab, font=('arial', 16, 'bold'), bd=8, width=6, justify='left', textvariable=E_Calabresa, state=DISABLED)
+txtCalabresa.grid(row=5, column=1)
+txtFrango = Entry(f1ab, font=('arial', 16, 'bold'), bd=8, width=6, justify='left', textvariable=E_Frango, state=DISABLED)
+txtFrango.grid(row=6, column=1)
+txtPromocional = Entry(f1ab, font=('arial', 16, 'bold'), bd=8, width=6, justify='left', textvariable=E_Promocional, state=DISABLED)
+txtPromocional.grid(row=7, column=1)
+
+#==========================Informação===============================
+lblReceipt = Label(ft2, font=('Times New Roman', 10, 'bold'), text='INFORMAÇÃO:', bd=2).grid(row=0, column=0)
+txtReceipt = Text(ft2, font=('arial', 11, 'bold'), bd=8, width=45)
+txtReceipt.grid(row=1, column=0)
+
+#==========================calculos_informação==============================================
+lblCostofTotallanches = Label(f2aa, font=('arial', 14, 'bold'), text="TOTAL LANCHES", bd=8)
+lblCostofTotallanches.grid(row=0, column=0)
+txtCostofTotallanches = Entry(f2aa, font=('arial', 14, 'bold'), bd=8, justify='left', textvariable=CostofTotallanches)
+txtCostofTotallanches.grid(row=0, column=1)
+
+lblCostofDemaisItens = Label(f2aa, font=('arial', 14, 'bold'), text="DEMAIS ITENS", bd=8)
+lblCostofDemaisItens.grid(row=1, column=0)
+txtCostofDemaisItens = Entry(f2aa, font=('arial', 14, 'bold'), bd=8, justify='left', textvariable=CostofDemaisItens)
+txtCostofDemaisItens.grid(row=1, column=1)
+
+lblServicoCharge= Label(f2aa, font=('arial', 14, 'bold'), text="        SERVICO        ", bd=8)
+lblServicoCharge.grid(row=2, column=0)
+txtServicoCharge = Entry(f2aa, font=('arial', 14, 'bold'), bd=8, justify='left', textvariable=ServicoCharge)
+txtServicoCharge.grid(row=2, column=1)
+
+
+#============================pagamento===========================================
+
+lblTaxas = Label(f2ab, font=('arial', 16, 'bold'), text="TAXAS", bd=8)
+lblTaxas.grid(row=0, column=0)
+txtTaxas = Entry(f2ab, font=('arial', 16, 'bold'), bd=8, justify='left', textvariable=Taxas)
+txtTaxas.grid(row=0, column=1)
+
+lblSubtotal = Label(f2ab, font=('arial', 16, 'bold'), text="SUBTOTAL", bd=8)
+lblSubtotal.grid(row=1, column=0)
+txtSubtotal = Entry(f2ab, font=('arial', 16, 'bold'), bd=8, justify='left', textvariable=Subtotal)
+txtSubtotal.grid(row=1, column=1)
+
+lblValor_Total = Label(f2ab, font=('arial', 16, 'bold'), text="VALOR TOTAL", bd=8)
+lblValor_Total.grid(row=2, column=0)
+txtValor_Total = Entry(f2ab, font=('arial', 16, 'bold'), bd=8, justify='left', textvariable=Valor_Total)
+txtValor_Total.grid(row=2, column=1)
+
+
+#===========================botões===================================
+
+btnTotal = Button(fb2, padx=16, pady=1, bd=4, fg="black", font=('arial', 12, 'bold'), width=5,
+                text="Total", command= CostofItem).grid(row=0, column=0)
+btnReceipt = Button(fb2, padx=16, pady=1, bd=4, fg="black", font=('arial', 12, 'bold'), width=5,
+                text="Receipt", command=Receipt).grid(row=0, column=1)
+btnReset = Button(fb2, padx=16, pady=1, bd=4, fg="black", font=('arial', 12, 'bold'), width=5,
+                text="Reset", command=Reset).grid(row=0, column=2)
+btnExit = Button(fb2, padx=16, pady=1, bd=4, fg="black", font=('arial', 12, 'bold'), width=5,
+                text="Exit",command=qExit).grid(row=0, column=3)
+
+root.mainloop()
